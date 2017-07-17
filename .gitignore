@@ -24,4 +24,5 @@
 
 /node_modules
 package-lock.json
-/vendor
+/vendor/bundle
+vendor/assets/bower_components

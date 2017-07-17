@@ -1,0 +1,2 @@
+module EnquetteHelper
+end

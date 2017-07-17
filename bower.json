@@ -1,0 +1,22 @@
+{
+  "name": "bvh_viewer",
+  "authors": [
+    "Dai Hasegawa <daihasg@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "three.js": "^0.86.0",
+    "stats.js": "*"
+  }
+}
