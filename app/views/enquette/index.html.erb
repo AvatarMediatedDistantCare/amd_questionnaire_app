@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_for(@user) do |f| %>
+        <div>名前を入力してください(英文字)</div>
+        <%= f.text_field :name %>
+        <div>年齢を入力してください(半角)</div>
+        <%= f.text_field :age, label: "enter age(半角)" %>
+        <div>
+          <label><%= f.radio_button :gender, value: "1" %>male</label>
+          <label><%= f.radio_button :gender, value: "2" %>female</label>
+        </div>
+        <%= f.submit value: "送信して次へ"%>
+      <% end %>
+    </div>
+  </div>

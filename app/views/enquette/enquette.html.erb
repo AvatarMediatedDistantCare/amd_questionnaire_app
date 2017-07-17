@@ -37,21 +37,86 @@
   </div>
 
   <div class="row">
-    <form class="enquette">
+    <%= form_for(@answer) do |f| %>
+      <%= f.hidden_field :audio_gesture_id, value: "1169" %>
       <div class="col-md-4">
         <h3>#1 アンケート</h3>
         <ul class="list-group">
           <div class="question">
-            1. アバタの動きは自然ですか？
+            1. アバタのジェスチャをするタイミングは適切ですか？
           </div>
           <li class="list-group-item">
-            <input type="radio" value="7" />
+            <label><%= f.radio_button :eval1_1, '7' %> とても自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="6" />
+            <label><%= f.radio_button :eval1_1, '6' %> 自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="5" />
+            <label><%= f.radio_button :eval1_1, '5' %> やや自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_1, '4' %> どちらでもない</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_1, '3' %> やや不自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_1, '2' %> 不自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_1, '1' %> とても不自然</label>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <div class="question">
+            2. アバタのジェスチャのタイミングは正しいですか？
+          </div>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_2, '7' %> とても自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_2, '6' %> 自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_2, '5' %> やや自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_2, '4' %> どちらでもない</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_2, '3' %> やや不自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_2, '2' %> 不自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_2, '1' %> とても不自然</label>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <div class="question">
+            3. アバタのジェスチャは音声の内容と合っていますか？
+          </div>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_3, '7' %> とても自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_3, '6' %> 自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_3, '5' %> やや自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_3, '4' %> どちらでもない</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_3, '3' %> やや不自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_3, '2' %> 不自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval1_3, '1' %> とても不自然</input>
           </li>
         </ul>
       </div>
@@ -62,25 +127,25 @@
             1. アバタのジェスチャをするタイミングは適切ですか？
           </div>
           <li class="list-group-item">
-            <input type="radio" value="7"> とても自然</input>
+            <label><%= f.radio_button :eval2_1, '7' %> とても自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="6"> 自然</input>
+            <label><%= f.radio_button :eval2_1, '6' %> 自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="5"> やや自然</input>
+            <label><%= f.radio_button :eval2_1, '5' %> やや自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="4"> どちらでもない</input>
+            <label><%= f.radio_button :eval2_1, '4' %> どちらでもない</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="3"> やや不自然</input>
+            <label><%= f.radio_button :eval2_1, '3' %> やや不自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="2"> 不自然</input>
+            <label><%= f.radio_button :eval2_1, '2' %> 不自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="1"> とても不自然</input>
+            <label><%= f.radio_button :eval2_1, '1' %> とても不自然</label>
           </li>
         </ul>
         <ul class="list-group">
@@ -88,25 +153,25 @@
             2. アバタのジェスチャのタイミングは正しいですか？
           </div>
           <li class="list-group-item">
-            <input type="radio" value="7"> とても自然</input>
+            <label><%= f.radio_button :eval2_2, '7' %> とても自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="6"> 自然</input>
+            <label><%= f.radio_button :eval2_2, '6' %> 自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="5"> やや自然</input>
+            <label><%= f.radio_button :eval2_2, '5' %> やや自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="4"> どちらでもない</input>
+            <label><%= f.radio_button :eval2_2, '4' %> どちらでもない</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="3"> やや不自然</input>
+            <label><%= f.radio_button :eval2_2, '3' %> やや不自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="2"> 不自然</input>
+            <label><%= f.radio_button :eval2_2, '2' %> 不自然</label>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="1"> とても不自然</input>
+            <label><%= f.radio_button :eval2_2, '1' %> とても不自然</label>
           </li>
         </ul>
         <ul class="list-group">
@@ -114,39 +179,111 @@
             3. アバタのジェスチャは音声の内容と合っていますか？
           </div>
           <li class="list-group-item">
-            <input type="radio" value="7"> とても自然</input>
+            <label><%= f.radio_button :eval2_3, '7' %> とても自然</input>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="6"> 自然</input>
+            <label><%= f.radio_button :eval2_3, '6' %> 自然</input>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="5"> やや自然</input>
+            <label><%= f.radio_button :eval2_3, '5' %> やや自然</input>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="4"> どちらでもない</input>
+            <label><%= f.radio_button :eval2_3, '4' %> どちらでもない</input>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="3"> やや不自然</input>
+            <label><%= f.radio_button :eval2_3, '3' %> やや不自然</input>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="2"> 不自然</input>
+            <label><%= f.radio_button :eval2_3, '2' %> 不自然</input>
           </li>
           <li class="list-group-item">
-            <input type="radio" value="1"> とても不自然</input>
+            <label><%= f.radio_button :eval2_3, '1' %> とても不自然</input>
           </li>
         </ul>
       </div>
       <div class="col-md-4">
         <h3>#3 アンケート</h3>
         <ul class="list-group">
-          <li class="list-group-item">リスト項目Ａ</li>
-          <li class="list-group-item">リスト項目Ｂ</li>
-          <li class="list-group-item">リスト項目Ｃ</li>
+          <div class="question">
+            1. アバタのジェスチャをするタイミングは適切ですか？
+          </div>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_1, '7' %> とても自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_1, '6' %> 自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_1, '5' %> やや自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_1, '4' %> どちらでもない</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_1, '3' %> やや不自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_1, '2' %> 不自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_1, '1' %> とても不自然</label>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <div class="question">
+            2. アバタのジェスチャのタイミングは正しいですか？
+          </div>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_2, '7' %> とても自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_2, '6' %> 自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_2, '5' %> やや自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_2, '4' %> どちらでもない</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_2, '3' %> やや不自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_2, '2' %> 不自然</label>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_2, '1' %> とても不自然</label>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <div class="question">
+            3. アバタのジェスチャは音声の内容と合っていますか？
+          </div>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_3, '7' %> とても自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_3, '6' %> 自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_3, '5' %> やや自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_3, '4' %> どちらでもない</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_3, '3' %> やや不自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_3, '2' %> 不自然</input>
+          </li>
+          <li class="list-group-item">
+            <label><%= f.radio_button :eval3_3, '1' %> とても不自然</input>
+          </li>
         </ul>
       </div>
+      <% end %>
     </div>
-  </form>
-  <input type="submit" action="POST" value="送信"/>
 </div>
 
 
