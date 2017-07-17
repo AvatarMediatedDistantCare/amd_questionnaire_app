@@ -38,7 +38,6 @@
 
   <div class="row">
     <%= form_for(@answer) do |f| %>
-      <%= f.hidden_field :audio_id, value: "1169" %>
       <div class="col-md-4">
         <h3>#1 アンケート</h3>
         <ul class="list-group">
@@ -309,11 +308,11 @@
   let gesture_count3 = document.getElementById('gesture_count3');
 
   // variables for file handling
-  let file_number = "1169";
-  let original_gesture_file = "data/original/gesture" + file_number + "_rot.bvh";
-  let predicted_gesture_file = "data/predicted/gesture" + file_number + "_rot.bvh";
-  let mismatched_gesture_file = "data/mismatched/gesture" + file_number + "_rot.bvh";
-  let audio_file = "data/audios/audio" + file_number + ".wav";
+  let file_number = <%= @answer.audio_id %>;
+  let original_gesture_file = "/data/original/gesture" + file_number + "_rot.bvh";
+  let predicted_gesture_file = "/data/predicted/gesture" + file_number + "_rot.bvh";
+  let mismatched_gesture_file = "/data/mismatched/gesture" + file_number + "_rot.bvh";
+  let audio_file = "/data/audios/audio" + file_number + ".wav";
 
 
   // main procedure
