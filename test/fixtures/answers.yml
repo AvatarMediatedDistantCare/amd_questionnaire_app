@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  audio_gesture_id: 
+  eval1: 
+  eval2: 
+  eval3: 
+
+two:
+  user_id: 
+  audio_gesture_id: 
+  eval1: 
+  eval2: 
+  eval3: 
