@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>アンケート回答ページ</h1>
+      <div>
+        <%= User.find(params[:user_id]).name %>
+      </div>
+      <div class="explanation">
+        回答してください。ブラウザの戻るボタンは使用しないでください。
+      </div>
+      <%= button_to "回答へ進む", sessions_path(user_id: params[:user_id]), action: "post" %>
+    </div>
+  </div>
+</div>

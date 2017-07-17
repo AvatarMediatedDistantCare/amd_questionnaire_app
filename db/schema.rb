@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717040313) do
+ActiveRecord::Schema.define(version: 20170717082029) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
-    t.integer "audio_gesture_id"
+    t.integer "session_id"
+    t.integer "prev_id"
+    t.integer "next_id"
+    t.integer "audio_id"
     t.integer "eval1_1"
     t.integer "eval1_2"
     t.integer "eval1_3"
@@ -24,6 +26,12 @@ ActiveRecord::Schema.define(version: 20170717040313) do
     t.integer "eval3_1"
     t.integer "eval3_2"
     t.integer "eval3_3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

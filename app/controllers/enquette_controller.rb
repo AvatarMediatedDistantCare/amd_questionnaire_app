@@ -3,7 +3,8 @@ class EnquetteController < ApplicationController
     @user = User.new
   end
 
-  def enquette
-    @answer = Answer.new
+  def explain
+    @session = Session.new
   end
+
 end

@@ -1,8 +1,10 @@
 class CreateAnswers < ActiveRecord::Migration[5.1]
   def change
     create_table :answers do |t|
-      t.integer :user_id
-      t.integer :audio_gesture_id
+      t.integer :session_id
+      t.integer :prev_id
+      t.integer :next_id
+      t.integer :audio_id
       t.integer :eval1_1
       t.integer :eval1_2
       t.integer :eval1_3
