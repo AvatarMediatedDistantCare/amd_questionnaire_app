@@ -52,12 +52,8 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.save
-        if @session.next_id.nil?
-          format.html { redirect_to finish_path, notice: 'Session was successfully created.' }
-          format.json { render :show, status: :created, location: @session }
-        else 
-          format.html { redirect_to answer_path(id: @session.start_id), notice: 'Session was successfully created.' }
-          format.json { render :show, status: :created, location: @session }
+        format.html { redirect_to answer_path(id: @session.start_id), notice: 'Session was successfully created.' }
+        format.json { render :show, status: :created, location: @session }
       else
         format.html { render :new }
         format.json { render json: @session.errors, status: :unprocessable_entity }
