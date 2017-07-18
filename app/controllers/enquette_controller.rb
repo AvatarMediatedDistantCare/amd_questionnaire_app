@@ -7,4 +7,7 @@ class EnquetteController < ApplicationController
     @session = Session.new
   end
 
+  def finish
+  end
+
 end
