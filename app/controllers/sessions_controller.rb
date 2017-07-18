@@ -31,7 +31,10 @@ class SessionsController < ApplicationController
       audio.delete(x)
     end
 
+    pattern_count = [0, 0, 0, 0, 0, 0]
+
     audio.each_with_index do |a, idx|
+      pattern_id = Random.rand(1..6)
       @ans = @session.answers.build
       @ans.save
       if idx == 0

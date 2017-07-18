@@ -1,3 +1,15 @@
 // Place all the styles related to the answers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.likert {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  input[type=radio] {
+    margin-right: 3px;
+    margin-left: 3px;
+  }
+  .ends {
+    font-weight: bold;
+  }
+}
