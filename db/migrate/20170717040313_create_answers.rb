@@ -5,6 +5,9 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.integer :prev_id
       t.integer :next_id
       t.integer :audio_id
+      t.integer :original
+      t.integer :mismatched
+      t.integer :predicted
       t.integer :eval1_1
       t.integer :eval1_2
       t.integer :eval1_3

@@ -31,10 +31,18 @@ class SessionsController < ApplicationController
       audio.delete(x)
     end
 
-    pattern_count = [0, 0, 0, 0, 0, 0]
+    org = [0,0,0]
+    mis = [0,0,0]
+    pre = [0,0,0]
 
     audio.each_with_index do |a, idx|
-      pattern_id = Random.rand(1..6)
+      pos = (1..3).to_a.shuffle
+      while org[pos[0]-1] >= 5 || mis[pos[1]-1] >= 5 || pre[pos[2]-1] >= 5
+        pos = (1..3).to_a.shuffle
+      end
+      org[pos[0]-1] = org[pos[0]-1] + 1
+      mis[pos[1]-1] = mis[pos[1]-1] + 1
+      pre[pos[2]-1] = pre[pos[2]-1] + 1
       @ans = @session.answers.build
       @ans.save
       if idx == 0
@@ -50,6 +58,9 @@ class SessionsController < ApplicationController
       @ans.prev_id = prev_id
       @ans.next_id = next_id
       @ans.audio_id = a
+      @ans.original = pos[0]
+      @ans.mismatched = pos[1]
+      @ans.predicted = pos[2]
       @ans.save
     end
 
