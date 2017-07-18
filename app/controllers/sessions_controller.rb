@@ -27,6 +27,9 @@ class SessionsController < ApplicationController
     @session = Session.new(session_params)
 
     audio = (1163..1182).to_a.shuffle
+    [1167, 1171, 1172, 1173, 1176].each do |x|
+      audio.delete(x)
+    end
 
     audio.each_with_index do |a, idx|
       @ans = @session.answers.build
@@ -49,8 +52,12 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.save
-        format.html { redirect_to answer_path(id: @session.start_id), notice: 'Session was successfully created.' }
-        format.json { render :show, status: :created, location: @session }
+        if @session.next_id.nil?
+          format.html { redirect_to end_path, notice: 'Session was successfully created.' }
+          format.json { render :show, status: :created, location: @session }
+        else 
+          format.html { redirect_to answer_path(id: @session.start_id), notice: 'Session was successfully created.' }
+          format.json { render :show, status: :created, location: @session }
       else
         format.html { render :new }
         format.json { render json: @session.errors, status: :unprocessable_entity }
