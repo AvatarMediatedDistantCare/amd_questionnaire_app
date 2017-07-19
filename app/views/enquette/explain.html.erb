@@ -1,12 +1,24 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <h1>アンケート回答ページ</h1>
+      <h1>アンケート説明</h1>
       <div>
-        <%= User.find(params[:user_id]).name %>
+        回答者：<%= User.find(params[:user_id]).name %>
       </div>
-      <div class="explanation">
-        回答してください。ブラウザの戻るボタンは使用しないでください。
+      <br />
+      <div class="explanation" style="margin-bottom: 20px;">
+        「回答へ進む」を押すと回答ページへ進みます。<br />
+        回答ページ上部の青い「start」ボタン押すと、音声とともに3種類のジェスチャが画面上で同時に再生されます。<br />
+        それぞれのジェスチャについて3つ、計９つの回答項目があります。<br />
+        回答をすべて選択した後、「すべて送信して次へ」のボタンを押して次の問に進んでください。<br />
+        問題は全部で15問あります。<br />
+      </div>
+      <div>
+        <ul class="list-group">
+          <li>回答は7段階評価で、一番左が「とてもそう思う」、一番右が「まったくそう思わない」となっています。</li>
+          <li>音声およびジェスチャは何度再生しても構いません。</li>
+          <li>ブラウザの「戻る」ボタン等を使って前の回答を回答しなおさないでください。</li>
+        </ul>
       </div>
       <%= button_to "回答へ進む", sessions_path(user_id: params[:user_id]), action: "post" %>
     </div>
