@@ -6,6 +6,7 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.integer :next_id
       t.integer :audio_id
       t.integer :gesture_type
+      t.integer :order
       t.integer :eval1
       t.integer :eval2
       t.integer :eval3

@@ -62,6 +62,7 @@ class SessionsController < ApplicationController
           prev_id = answers_list[idx-1].id
           next_id = answers_list[idx+1].id
         end
+        @ans.order = idx + 1
         @ans.prev_id = prev_id
         @ans.next_id = next_id
         @ans.save

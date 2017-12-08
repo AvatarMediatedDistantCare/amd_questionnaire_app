@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170717082029) do
     t.integer "next_id"
     t.integer "audio_id"
     t.integer "gesture_type"
+    t.integer "order"
     t.integer "eval1"
     t.integer "eval2"
     t.integer "eval3"
