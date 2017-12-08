@@ -74,6 +74,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:audio_id, :eval1_1, :eval1_2, :eval1_3, :eval2_1, :eval2_2, :eval2_3, :eval3_1, :eval3_2, :eval3_3)
+      params.require(:answer).permit(:audio_id, :eval1, :eval2, :eval3, :eval4, :eval5, :eval6, :eval7, :eval8, :eval9)
     end
 end

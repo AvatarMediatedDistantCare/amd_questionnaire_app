@@ -26,42 +26,46 @@ class SessionsController < ApplicationController
   def create
     @session = Session.new(session_params)
 
-    audio = (1163..1182).to_a.shuffle
-    [1167, 1171, 1172, 1173, 1176].each do |x|
-      audio.delete(x)
-    end
+    audio_id_list = [1169, 1170, 1175]
 
-    org = [0,0,0]
-    mis = [0,0,0]
-    pre = [0,0,0]
+    audio_id_list.each do |a_id|
+      for num in 0..2 do
+        @ans = @session.answers.build
+        @ans.save
+        #if idx == 0
+        #  prev_id = nil
+        #  next_id = @ans.id + 1
+        #elsif idx == audio.length-1
+        #  prev_id = @ans.id - 1
+        #  next_id = nil
+        #else
+        #  prev_id = @ans.id - 1
+        #  next_id = @ans.id + 1
+        #end
+        #@ans.prev_id = prev_id
+        #@ans.next_id = next_id
+        @ans.audio_id = a_id
+        @ans.gesture_type = num
+        @ans.save
+      end
 
-    audio.each_with_index do |a, idx|
-      pos = (1..3).to_a.shuffle
-      while org[pos[0]-1] >= 5 || mis[pos[1]-1] >= 5 || pre[pos[2]-1] >= 5
-        pos = (1..3).to_a.shuffle
+      answers_list = @session.answers.shuffle
+      answers_list.each_with_index do |ans, idx|
+        @ans = ans
+        if idx == 0
+          prev_id = nil
+          next_id = answers_list[idx+1].id
+        elsif idx == answers_list.length - 1
+          prev_id = answers_list[idx-1].id
+          next_id = nil
+        else
+          prev_id = answers_list[idx-1].id
+          next_id = answers_list[idx+1].id
+        end
+        @ans.prev_id = prev_id
+        @ans.next_id = next_id
+        @ans.save
       end
-      org[pos[0]-1] = org[pos[0]-1] + 1
-      mis[pos[1]-1] = mis[pos[1]-1] + 1
-      pre[pos[2]-1] = pre[pos[2]-1] + 1
-      @ans = @session.answers.build
-      @ans.save
-      if idx == 0
-        prev_id = nil
-        next_id = @ans.id + 1
-      elsif idx == audio.length-1
-        prev_id = @ans.id - 1
-        next_id = nil
-      else
-        prev_id = @ans.id - 1
-        next_id = @ans.id + 1
-      end
-      @ans.prev_id = prev_id
-      @ans.next_id = next_id
-      @ans.audio_id = a
-      @ans.original = pos[0]
-      @ans.mismatched = pos[1]
-      @ans.predicted = pos[2]
-      @ans.save
     end
 
     respond_to do |format|

@@ -5,18 +5,16 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.integer :prev_id
       t.integer :next_id
       t.integer :audio_id
-      t.integer :original
-      t.integer :mismatched
-      t.integer :predicted
-      t.integer :eval1_1
-      t.integer :eval1_2
-      t.integer :eval1_3
-      t.integer :eval2_1
-      t.integer :eval2_2
-      t.integer :eval2_3
-      t.integer :eval3_1
-      t.integer :eval3_2
-      t.integer :eval3_3
+      t.integer :gesture_type
+      t.integer :eval1
+      t.integer :eval2
+      t.integer :eval3
+      t.integer :eval4
+      t.integer :eval5
+      t.integer :eval6
+      t.integer :eval7
+      t.integer :eval8
+      t.integer :eval9
 
       t.timestamps
     end
