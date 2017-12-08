@@ -288,6 +288,7 @@ THREE.BVHLoader.prototype = {
 
 			bone.position.add( source.offset );
 			bone.name = source.name;
+      bone.scale = new THREE.Vector3(10, 10, 10)
 
 			if ( source.type !== 'ENDSITE' ) {
 

@@ -10,4 +10,6 @@ class EnquetteController < ApplicationController
   def finish
   end
 
+  def sample
+  end
 end

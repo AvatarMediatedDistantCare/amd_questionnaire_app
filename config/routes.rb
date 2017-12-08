@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :answers
   resources :users
   resources :sessions
+  get 'sample', to: 'enquette#sample'
 end
