@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require three.js
 //= require bootstrap-sprockets
+//= require three.js
 //= require_tree .

@@ -28,3 +28,4 @@ package-lock.json
 vendor/assets/bower_components
 /public/data
 *.swp
+*.log
