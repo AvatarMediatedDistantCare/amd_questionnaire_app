@@ -26,48 +26,65 @@ class SessionsController < ApplicationController
   def create
     @session = Session.new(session_params)
 
-    audio_id_list = [1169, 1170, 1175]
-
-    audio_id_list.each do |a_id|
-      for num in 0..2 do
-        @ans = @session.answers.build
-        @ans.save
-        #if idx == 0
-        #  prev_id = nil
-        #  next_id = @ans.id + 1
-        #elsif idx == audio.length-1
-        #  prev_id = @ans.id - 1
-        #  next_id = nil
-        #else
-        #  prev_id = @ans.id - 1
-        #  next_id = @ans.id + 1
-        #end
-        #@ans.prev_id = prev_id
-        #@ans.next_id = next_id
-        @ans.audio_id = a_id
-        @ans.gesture_type = num
-        @ans.save
-      end
-
-      answers_list = @session.answers.shuffle
-      answers_list.each_with_index do |ans, idx|
-        @ans = ans
-        if idx == 0
-          prev_id = nil
-          next_id = answers_list[idx+1].id
-        elsif idx == answers_list.length - 1
-          prev_id = answers_list[idx-1].id
-          next_id = nil
-        else
-          prev_id = answers_list[idx-1].id
-          next_id = answers_list[idx+1].id
+    motion_id_list = [3, 4, 5]
+    
+    motion_id_list.each do |m_id|
+      for avator_type in 0..1 do
+        for gesture_type in 0..1 do
+          @ans = @session.answers.build
+          @ans.avator_type = avator_type
+          @ans.motion_id = m_id
+          @ans.gesture_type = gesture_type
+          @ans.save
         end
-        @ans.order = idx + 1
-        @ans.prev_id = prev_id
-        @ans.next_id = next_id
-        @ans.save
       end
     end
+
+    avator_answers_list = @session.answers.where(avator_type: 0).shuffle
+    skeleton_answers_list = @session.answers.where(avator_type: 1).shuffle
+
+    avator_answers_list.each_with_index do |ans, idx|
+      @ans = ans
+      if idx == 0
+        prev_id = nil
+        next_id = avator_answers_list[idx+1].id
+      elsif idx == avator_answers_list.length - 1
+        prev_id = avator_answers_list[idx-1].id
+        next_id = nil
+      else
+        prev_id = avator_answers_list[idx-1].id
+        next_id = avator_answers_list[idx+1].id
+      end
+      @ans.order = idx + 1
+      @ans.prev_id = prev_id
+      @ans.next_id = next_id
+      @ans.save
+    end
+
+    skeleton_answers_list.each_with_index do |ans, idx|
+      @ans = ans
+      if idx == 0
+        prev_id = nil
+        next_id = skeleton_answers_list[idx+1].id
+      elsif idx == skeleton_answers_list.length - 1
+        prev_id = skeleton_answers_list[idx-1].id
+        next_id = nil
+      else
+        prev_id = skeleton_answers_list[idx-1].id
+        next_id = skeleton_answers_list[idx+1].id
+      end
+      @ans.order = idx + 1
+      @ans.prev_id = prev_id
+      @ans.next_id = next_id
+      @ans.save
+    end
+
+    @avator_ans = @session.answers.where(avator_type: 0).find_by(next_id: nil)
+    @skeleton_ans = @session.answers.where(avator_type: 1).find_by(prev_id: nil)
+    @avator_ans.next_id = @skeleton_ans.id
+    @skeleton_ans.prev_id = @avator_ans.id
+    @avator_ans.save
+    @skeleton_ans.save
 
     respond_to do |format|
       if @session.save

@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   # POST /data.json
   def create
     @user = User.new(user_params)
+    logger.debug("if文の中に入りました")
 
     respond_to do |format|
       if @user.save
