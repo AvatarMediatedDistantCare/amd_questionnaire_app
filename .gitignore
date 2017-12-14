@@ -27,5 +27,7 @@ package-lock.json
 /vendor/bundle
 vendor/assets/bower_components
 /public/data
+/public/model
 *.swp
 *.log
+.DS_Store
