@@ -1,12 +1,11 @@
 {
   "name": "three.js",
-  "version": "0.86.0",
+  "version": "0.68.0",
   "description": "",
-  "main": "bvhreader.js",
   "dependencies": {
     "bower": "^1.8.2",
     "jquery": "^3.2.1",
-    "three": "^0.86.0"
+    "three": "^0.68.87"
   },
   "devDependencies": {},
   "scripts": {

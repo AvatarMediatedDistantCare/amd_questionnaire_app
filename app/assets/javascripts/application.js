@@ -14,4 +14,5 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require three.js
+//= require TrackballControls.js
 //= require_tree .

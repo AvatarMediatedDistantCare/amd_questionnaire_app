@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "jquery": "*",
-    "three.js": "^0.86.0",
+    // "three.js": "r68",
     "stats.js": "*"
   }
 }

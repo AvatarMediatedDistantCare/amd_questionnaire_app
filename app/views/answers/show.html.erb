@@ -5,13 +5,10 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div id="webglcontainer"></div>
-      <div id="gesture_count1" class="text-muted">
-        Gesture Time: 0
-      </div>
-    </div>
+  <div class="container">
+    <section>
+      <div class="webgl-container" id="webgl-container"></div>
+    </section>
   </div>
 
   <div class="row">
@@ -72,20 +69,19 @@
     <%= f.submit "すべて送信して次へ" %>
   <% end%>
 </div>
-
-
 <script>
 
+
   // containers 
-  container = document.getElementById('webglcontainer');
+  container = document.getElementById('webgl-container');
 
   // variables for threejs
-  let clock = new THREE.Clock();
-  let webglcamera, scene, webglrenderer;
+  var clock = new THREE.Clock();
+  var webglcamera, scene, webglrenderer;
   var webglwidth = 640;
   var webglheight = 480;
-  let loader,mesh;
-  let gesture_count1 = document.getElementById('gesture_count1');
+  var loader,mesh;
+  var gesture_count1 = document.getElementById('gesture_count1');
 
   var vivi = [];
   var vuvu = [];
@@ -96,15 +92,18 @@
 
   var gesture_file_1, model_data;
 
+  // トラックボールの作成
+  var trackball;
+
 
   // variables for file handling
-  let file_number = <%= @answer.motion_id %>;
+  var file_number = <%= @answer.motion_id %>;
   if( <%= @answer.motion_id %> == 0 ){
-    gesture_file_1 = "../../../public/data/kinect_skeleton_" + file_number + ".csv";
-    model_data = "../../../public/model/50s_politician4v2_noglow.js";
+    gesture_file_1 = "/data/kinect_skeleton_" + file_number + ".csv";
+    model_data = "/model/50s_politician4v2_noglow.js";
   } else {
     gesture_file_1 = "/data/predicted_" + file_number + ".csv";
-    model_data = "/model/kinect_banaoh.js";
+    model_data = "/model/50s_politician4v2_noglow.js";
   }
 
   // main procedure
@@ -183,8 +182,24 @@
     webglcamera.lookAt(new THREE.Vector3(0, 30, 0));
     scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0xfff4e5, 0.00003);
-    //scene.add( new THREE.GridHelper( 200, 10 ) );
-    // renderer
+
+
+    //==================
+    trackball = new THREE.TrackballControls(webglcamera);
+    // 回転無効化と回転速度の設定
+    trackball.noRotate = false; // false:有効 true:無効
+    trackball.rotateSpeed = 5.0;
+    // ズーム無効化とズーム速度の設定
+    trackball.noZoom = false; // false:有効 true:無効
+    trackball.zoomSpeed = 1.0;
+    // パン無効化とパン速度の設定
+    trackball.noPan = false; // false:有効 true:無効
+    trackball.panSpeed = 1.0;
+    // スタティックムーブの有効化
+    trackball.staticMoving = true; // true:スタティックムーブ false:ダイナミックムーブ
+    // ダイナミックムーブ時の減衰定数
+    trackball.dynamicDampingFactor = 0.3;
+    //==================
 
     for (var i = 0; i < 3; i++) {
       spotlight[i] = new THREE.SpotLight(0xffffff);
@@ -202,6 +217,13 @@
       scene.add(spotlight[i]);
     }
 
+    // var material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+    // var geometry = new THREE.CircleGeometry( 0.4, 8 );
+    // joint = new THREE.Mesh( geometry, material );
+    // joint.position.set(0, 0, 0);
+
+    scene.add(joint);
+
     loader = new THREE.JSONLoader();
     loader.load(model_data, function(geometry, mats) {
 
@@ -217,7 +239,7 @@
       // (3) meshの準備
       mesh = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(mats));
       mesh.skeleton.bones[0].position.set(0, 0, 0);
-      mesh.scale.set(1, 1, 10000000000);
+      mesh.scale.set(1, 1, 1);
       mesh.castShadow = true;
       scene.add(mesh);
       
@@ -365,7 +387,6 @@
     mesh.skeleton.bones[23].quaternion.copy( three_rotq3[23] );
     mesh.skeleton.bones[24].quaternion.copy( three_rotq3[24] );
 
-
   }
 
 
@@ -386,9 +407,10 @@
     var both_add_frame = 0;
     
 
-    convert_kinect_to_three( motion_data[current_frame + kinect_add_frame + both_add_frame  ], mesh );
+    // convert_kinect_to_three( motion_data[current_frame + kinect_add_frame + both_add_frame  ], mesh );
 
     requestAnimationFrame( render );
+    trackball.update();
 
     webglrenderer.render( scene, webglcamera );
   }
