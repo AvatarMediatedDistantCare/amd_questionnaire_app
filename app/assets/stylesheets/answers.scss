@@ -13,3 +13,35 @@
     font-weight: bold;
   }
 }
+.webgl-container{
+  margin:0px auto;
+  width:642px;
+  height:482px;
+  border: solid 1px;
+}
+.questions{
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.question{
+  font-size: 15px;
+}
+
+
+.progress{
+  margin-top: 10px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.reset_button{
+  margin-top: 5px;
+  
+}
+.restart_btn{
+  padding: 6px 6px !important;
+}
+
+.submit_button{
+  padding: 30px;
+  float: right;
+}
