@@ -199,7 +199,6 @@
 
     webglcamera = new THREE.PerspectiveCamera(40, webglwidth / webglheight, 1, 12000);
     webglcamera.position.set(0, 10, 30);
-    webglcamera.lookAt(new THREE.Vector3(0, 30, 0));
     scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0xfff4e5, 0.00003);
 
@@ -243,6 +242,8 @@
       mesh.scale.set(1*scale, 1*scale, 1*scale);
       mesh.castShadow = true;
       scene.add(mesh);
+      webglcamera.lookAt(mesh.position);
+
       
       render();
     });
