@@ -107,9 +107,6 @@
   var gesture_file_1, model_data;
   var scale=1;
 
-  // トラックボールの作成
-  var trackball;
-
 
   if( <%= @answer.avator_type %> == 0 ){
     model_data = "/model/50s_politician4v2_noglow.js";
@@ -205,24 +202,6 @@
     webglcamera.lookAt(new THREE.Vector3(0, 30, 0));
     scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0xfff4e5, 0.00003);
-
-
-    //==================
-    trackball = new THREE.TrackballControls(webglcamera);
-    // 回転無効化と回転速度の設定
-    trackball.noRotate = false; // false:有効 true:無効
-    trackball.rotateSpeed = 5.0;
-    // ズーム無効化とズーム速度の設定
-    trackball.noZoom = false; // false:有効 true:無効
-    trackball.zoomSpeed = 1.0;
-    // パン無効化とパン速度の設定
-    trackball.noPan = false; // false:有効 true:無効
-    trackball.panSpeed = 1.0;
-    // スタティックムーブの有効化
-    trackball.staticMoving = true; // true:スタティックムーブ false:ダイナミックムーブ
-    // ダイナミックムーブ時の減衰定数
-    trackball.dynamicDampingFactor = 0.3;
-    //==================
 
     for (var i = 0; i < 3; i++) {
       spotlight[i] = new THREE.SpotLight(0xffffff);
@@ -432,7 +411,6 @@
     convert_kinect_to_three( motion_data[current_frame + kinect_add_frame + both_add_frame  ], mesh );
 
     requestAnimationFrame( render );
-    trackball.update();
 
     webglrenderer.render( scene, webglcamera );
   }
