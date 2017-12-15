@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   def create
     @session = Session.new(session_params)
 
-    motion_id_list = [3, 4, 5]
+    motion_id_list = (1..24).to_a
     
     motion_id_list.each do |m_id|
       for avator_type in 0..1 do

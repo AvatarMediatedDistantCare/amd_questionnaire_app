@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <h1>【Part.<%= @answer.avator_type+1 %>】 問<%= @answer.order %>/6</h1>
+      <h1>【Part.<%= @answer.avator_type+1 %>】 問<%= @answer.order %>/48</h1>
     </div>
   </div>
 
@@ -120,7 +120,7 @@
   // variables for file handling
   var file_number = <%= @answer.motion_id %>;
   if( <%= @answer.gesture_type %> == 0 ){
-    gesture_file_1 = "/data/kinect_skeleton_" + file_number + ".csv";
+    gesture_file_1 = "/data/kinect_" + file_number + ".csv";
   } else {
     gesture_file_1 = "/data/predicted_" + file_number + ".csv";
   }
