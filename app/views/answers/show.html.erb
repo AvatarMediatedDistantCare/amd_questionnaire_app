@@ -27,6 +27,7 @@
 
   <div class="questions col-md-5">
     <%= form_for(@answer) do |f| %>
+      <div class="error_text"><%= flash[:error] %></div>
       <div class="col-sm-12">
         <h3>アンケート回答欄</h3>
         <ul class="list-group">
@@ -78,9 +79,11 @@
           </div>
         </ul>
       </div>
-      <span class="submit_button">
-        <%= f.submit "すべて送信して次へ", class: "btn btn-info" %>
-      </span>
+      <div style="display: table; width: 100%;">      
+        <span class="submit_button">
+          <%= f.submit "送信して次へ", class: "btn btn-info" %>
+        </span>
+      </div>
     </div>
   <% end%>
 </div>

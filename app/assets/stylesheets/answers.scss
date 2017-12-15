@@ -27,7 +27,6 @@
   font-size: 15px;
 }
 
-
 .progress{
   margin-top: 10px;
   padding-left: 0px !important;
@@ -42,6 +41,12 @@
 }
 
 .submit_button{
-  padding: 30px;
-  float: right;
+  padding: 10px;
+  margin: auto;
+  display: inherit;
+}
+
+.error_text{
+  padding: 10px;
+  color: red;
 }

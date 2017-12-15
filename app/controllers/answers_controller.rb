@@ -40,19 +40,23 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
-    respond_to do |format|
-      if @answer.update(answer_params)
-        if @answer.next_id.nil?
-          format.html { redirect_to finish_path, notice: 'Answer was successfully updated.' }
-          format.json { render :show, status: :ok, location: @answer }
+    if params[:answer].present? && params[:answer][:eval1].present? && params[:answer][:eval2].present? && params[:answer][:eval3].present?
+      respond_to do |format|
+        if @answer.update(answer_params)
+          if @answer.next_id.nil?
+            format.html { redirect_to finish_path, notice: 'Answer was successfully updated.' }
+            format.json { render :show, status: :ok, location: @answer }
+          else
+            format.html { redirect_to answer_path(id: @answer.next_id), notice: 'Answer was successfully updated.' }
+            format.json { render :show, status: :ok, location: @answer }
+          end
         else
-          format.html { redirect_to answer_path(id: @answer.next_id), notice: 'Answer was successfully updated.' }
-          format.json { render :show, status: :ok, location: @answer }
+          format.html { render :edit }
+          format.json { render json: @answer.errors, status: :unprocessable_entity }
         end
-      else
-        format.html { render :edit }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
+    else
+      redirect_to answer_path(id: @answer.id), flash: { error: "すべて入力して下さい" }
     end
   end
 
