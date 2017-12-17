@@ -7,8 +7,8 @@
         <div>年齢を入力してください(半角)</div>
         <%= f.text_field :age, label: "enter age(半角)" %>
         <div>
-          <label><%= f.radio_button :gender, value: "1" %>male</label>
-          <label><%= f.radio_button :gender, value: "2" %>female</label>
+          <label><%= f.radio_button :gender, value: "1" %>男性</label>
+          <label><%= f.radio_button :gender, value: "2" %>女性</label>
         </div>
         <%= f.submit value: "送信して次へ"%>
       <% end %>
