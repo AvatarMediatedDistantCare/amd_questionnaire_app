@@ -389,11 +389,13 @@
     if( current_frame < end_frame-1 ){
       if( count % 3 == 0 )
         current_frame++;
+      $("input.btn.btn-info").prop("disabled", true);
+    } else {
+      $("input.btn.btn-info").prop("disabled", false);
     }
     var percent = (current_frame/(end_frame-10))*100;
     // console.log( percent );
     $(".progress-bar").css({'width': percent+'%'});
-
     
     var kinect_add_frame = 0;
     var mocap_add_frame = 0;
