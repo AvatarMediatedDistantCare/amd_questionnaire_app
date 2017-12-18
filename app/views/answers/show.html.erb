@@ -103,12 +103,7 @@
   var scale=1;
 
 
-  if( <%= @answer.avator_type %> == 0 ){
-    model_data = "/model/50s_politician4v2_noglow.js";
-  } else {
-    model_data = "/model/kinect_banaoh.js";
-    scale = 10;
-  }
+  model_data = "/model/50s_politician4v2_noglow.js";
   // variables for file handling
   var file_number = <%= @answer.motion_id %>;
   if( <%= @answer.gesture_type %> == 0 ){

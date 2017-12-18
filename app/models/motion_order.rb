@@ -1,0 +1,2 @@
+class MotionOrder < ApplicationRecord
+end

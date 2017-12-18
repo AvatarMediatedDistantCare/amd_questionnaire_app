@@ -25,24 +25,27 @@ class SessionsController < ApplicationController
   # POST /sessions.json
   def create
     @session = Session.new(session_params)
+    order_list = [
+      [1, 2, 3],
+      [1, 3, 2],
+      [2, 1, 3],
+      [2, 3, 1],
+      [3, 1, 2],
+      [3 ,2, 1]
+    ]
 
-    motion_id_list = (1..24).to_a
-    
+    motion_id_list = (0..8).to_a
+
     motion_id_list.each do |m_id|
-      for avator_type in 0..1 do
-        for gesture_type in 0..1 do
-          @ans = @session.answers.build
-          @ans.avator_type = avator_type
-          @ans.motion_id = m_id
-          @ans.gesture_type = gesture_type
-          @ans.save
-        end
+      for gesture_type in 0..2 do
+        @ans = @session.answers.build
+        @ans.motion_id = m_id
+        @ans.save
       end
     end
-
+    
     avator_answers_list = @session.answers.where(avator_type: 0).shuffle
-    skeleton_answers_list = @session.answers.where(avator_type: 1).shuffle
-
+    
     avator_answers_list.each_with_index do |ans, idx|
       @ans = ans
       if idx == 0
