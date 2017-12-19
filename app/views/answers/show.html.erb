@@ -17,7 +17,7 @@
     </section>
   </div>
 
-  <div class="questions col-md-5">
+  <div class="questions col-md-6">
     <%= form_for(@answer) do |f| %>
       <div class="error_text"><%= flash[:error] %></div>
       <div class="col-sm-12">
@@ -106,11 +106,15 @@
   model_data = "/model/50s_politician4v2_noglow.js";
   // variables for file handling
   var file_number = <%= @answer.motion_id %>;
+  var side_number = <%= @answer.side_id %>;
   if( <%= @answer.gesture_type %> == 0 ){
-    gesture_file_1 = "/data/kinect_" + file_number + ".csv";
-  } else {
-    gesture_file_1 = "/data/predicted_" + file_number + ".csv";
+    gesture_file_1 = "/data/kinect_" + file_number + "_" + side_number + ".csv";
+  } else if ( <%= @answer.gesture_type %> == 1 ){
+    gesture_file_1 = "/data/predicted_" + file_number + "_" + side_number + ".csv";
+  } else if ( <%= @answer.gesture_type %> == 2 ){
+    gesture_file_1 = "/data/mocap_" + file_number + "_" + side_number + ".csv";
   }
+  
   console.log( gesture_file_1 );
 
   // main procedure

@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   def create
     @session = Session.new(session_params)
     order_list = [
-      [0, 1, 2],
+      [0, 1, 2], 
       [0, 2, 1],
       [1, 0, 2],
       [1, 2, 0],
@@ -34,30 +34,19 @@ class SessionsController < ApplicationController
       [2 ,1, 1]
     ]
 
-    motion_id_list = (0..23).to_a
+    side_id_list = (0..2).to_a
+    motion_id_list = (0..7).to_a
 
     motion_order_list = MotionOrder.where(applying_user_id: @session.user_id)
-    motion_order_list.each_with_index do |motion, idx|
-      if( motion.order_type == 0 )
-        @kinect_ans = @session.answers.build
-        @kinect_ans.motion_id = idx
-        @kinect_ans.gesture_type = 0
-        @kinect_ans.save
-
-        @proposed_ans = @session.answers.build
-        @proposed_ans.motion_id = idx
-        @proposed_ans.gesture_type = 1
-        @proposed_ans.save
-      else
-        @proposed_ans = @session.answers.build
-        @proposed_ans.motion_id = idx
-        @proposed_ans.gesture_type = 1
-        @proposed_ans.save
-
-        @kinect_ans = @session.answers.build
-        @kinect_ans.motion_id = idx
-        @kinect_ans.gesture_type = 0
-        @kinect_ans.save
+    side_id_list.each do |s_id|
+      motion_order_list.each_with_index do |motion, idx|
+        order_list[motion.order_type].each do |o_id|
+          @kinect_ans = @session.answers.build
+          @kinect_ans.motion_id = idx
+          @kinect_ans.gesture_type = o_id
+          @kinect_ans.side_id = s_id
+          @kinect_ans.save
+        end
       end
     end
     

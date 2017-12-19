@@ -4,9 +4,9 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.integer :session_id
       t.integer :prev_id
       t.integer :next_id
-      t.integer :avator_type
       t.integer :motion_id
       t.integer :gesture_type
+      t.integer :side_id
       t.integer :order
       t.integer :eval1
       t.integer :eval2
