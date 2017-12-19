@@ -1,17 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-motion_id = (0...8).to_a
-applying_user_type = (0...6).to_a
+# motionの数
+motion_id = (0..23).to_a
+applying_user_id = (0...120).to_a
+counter_balance = (0..1).to_a.shuffle
+
 
 motion_id.each do |m_id|
-  order_type = (0...6).to_a.shuffle
-  order_type.each_with_index do |o_id, index|
-    MotionOrder.create( motion_id: m_id, order_type: o_id, applying_user_type: applying_user_type[index] )
+  applying_user_id.each do |u_id|
+    order_type = counter_balance.pop
+    if(order_type == nil)
+      counter_balance = (0..1).to_a.shuffle
+      order_type = counter_balance.pop
+    end
+    MotionOrder.create( motion_id: m_id, order_type: order_type, applying_user_id: u_id )
   end
 end
-
