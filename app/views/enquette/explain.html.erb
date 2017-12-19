@@ -3,27 +3,39 @@
     <div class="col-md-12">
       <h1>アンケート説明</h1>
       <div>
-        <span class="bold_text">【回答者】<%= User.find(params[:user_id]).name %></span>
+        <h4 class="bold_text">【回答者】<%= User.find(params[:user_id]).name %></h4>
       </div>
 
       <div class="explanation" style="margin-bottom: 20px;">
-        <p>「回答へ進む」を押すと回答ページへ進みます。</p>
-        <p><span class="bold_text">【実験説明】</span><br>
+        <p>
+          <h4 class="bold_text">【実験説明】</h4>
           <ul class="list-group">
-            <li>本アンケートは『Part.1』と『Part.2』の2部構成です</li>
-            <li>各Partには48種類のモーションがあり、モーション１つ1つについてアンケートを行って頂きます。</li>
-            <li>「アンケート回答欄」の箇所で回答してください。</li>
+            <li>これから流れる10秒程度の動画をみて、動画内のアバタの動作に関するアンケートに回答していただきます。</li>
+            <li>動画は48種類あり、すべての動画において「アンケート回答欄」の箇所で回答してください。</li>
             <li>回答をすべて選択した後、「送信して次へ」のボタンを押して次の問に進んでください。</li>
           </ul>
         </p>
-      </div>
-      <div>
-      <p><span class="bold_text">【回答方法】</span><br>
-        <ul class="list-group">
-          <li>回答は7段階評価で、一番左が「とてもそう思う」、一番右が「まったくそう思わない」となっています。</li>
-          <li>モーションは何度再生しても構いません。</li>
-          <li><strong>ブラウザの「戻る」ボタン等を使って前の回答を回答しなおさないでください。</strong></li>
-        </ul>
+  
+        <p>
+          <h4 class="bold_text">【回答方法】</h4>
+          <ul class="list-group">
+            <li>回答は7段階評価で、一番左が「とてもそう思う」、一番右が「まったくそう思わない」となっています。</li>
+            <li>いちばん当てはまるものを選択して下さい</li>
+
+            <p>《アンケート回答欄の例》</p>
+            <img class='questions_image' src="/questions.png" />
+          </ul>
+          
+        </p>
+
+        <p>
+          <h4 class="bold_text">【注意事項】</h4>
+          <ol class="list-group">
+            <li><strong>動画は1度しか流れません</strong></li>
+            <li><strong>ブラウザの「戻る」ボタン等を使って前動画について回答しなおさないでください。</strong></li>
+            <li><strong>動画の再生が終わるまで回答の送信は出来ません</strong></li>
+          </ol>
+        </p>
       </div>
       <%= button_to "回答へ進む", sessions_path(user_id: params[:user_id]), action: "post" %>
     </div>

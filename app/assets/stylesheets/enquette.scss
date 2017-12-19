@@ -3,6 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 .list-group{
-  padding-left: 30;
+  margin-left: 40px;
+  li{
+    padding-bottom: 5px;
+    font-size: 15px;
+  }
+}
+
+.questions_image{
+  width: 400px;
+  border: 1px #000000 solid;
+  margin-left: 10px;
 }
