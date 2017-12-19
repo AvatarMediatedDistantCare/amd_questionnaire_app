@@ -67,7 +67,7 @@ class SessionsController < ApplicationController
       @ans = ans
       if idx == 0
         prev_id = nil
-        next_id = avator_answers_list.find_by(motion_id: ans.motion_id).id
+        next_id = avator_answers_list.find_by(motion_id: ans.motion_id).id + 1
       elsif idx == avator_answers_list.length - 1
         prev_id = avator_answers_list[idx-1].id
         next_id = nil

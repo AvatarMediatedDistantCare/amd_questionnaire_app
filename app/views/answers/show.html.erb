@@ -386,7 +386,9 @@
         current_frame++;
       $("input.btn.btn-info").prop("disabled", true);
     } else {
-      $("input.btn.btn-info").prop("disabled", false);
+      if($("input[name='answer[eval1]']:checked").val() && $("input[name='answer[eval2]']:checked").val() && $("input[name='answer[eval3]']:checked").val()){
+        $("input.btn.btn-info").prop("disabled", false);
+      }
     }
     var percent = (current_frame/(end_frame-10))*100;
     // console.log( percent );
