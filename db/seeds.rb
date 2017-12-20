@@ -1,6 +1,6 @@
 # motionの数
 motion_id = (0..7).to_a # motion_index
-applying_user_id = (0...120).to_a # amount of users
+applying_user_id = (1...120).to_a # amount of users
 counter_balance = (0..5).to_a.shuffle # 提示順序の組み合わせ
 
 
