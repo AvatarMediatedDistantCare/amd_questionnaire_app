@@ -78,6 +78,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:motion_id, :eval1, :eval2, :eval3)
+      params.require(:answer).permit(:motion_id, :eval1, :eval2, :eval3, :eval_motion_id, :eval_motion_side)
     end
 end

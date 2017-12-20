@@ -76,7 +76,8 @@
             4. アバタがしていた動作を選択してください
           </div>
           <%= f.select :eval_motion_id,
-          [["腕を組む", '0'],
+          [ ["選択して下さい", ''],
+          ["腕を組む", '0'],
           ["万歳", '1'],
           ["首を横に振る", '2'],
           ["首を縦に振る", '3'],
@@ -93,7 +94,8 @@
             5. アバタの身体が向いていた方向を選択してください
           </div>
           <%= f.select :eval_motion_side,
-          [["後ろ", '0'],
+          [["選択して下さい", ''],
+          ["後ろ", '0'],
           ["前", '1'],
           ["横", '2']], {},
           class: "form-control likert text-center" %>
@@ -419,7 +421,8 @@
         current_frame++;
       $("input.btn.btn-info").prop("disabled", true);
     } else {
-      if($("input[name='answer[eval1]']:checked").val() && $("input[name='answer[eval2]']:checked").val() && $("input[name='answer[eval3]']:checked").val()){
+      if($("input[name='answer[eval1]']:checked").val() && $("input[name='answer[eval2]']:checked").val() && $("input[name='answer[eval3]']:checked").val()
+        && ($("[name='answer[eval_motion_id]']").val() != '' ) && ($("[name='answer[eval_motion_side]']").val() != '' ) ){
         $("input.btn.btn-info").prop("disabled", false);
       }
     }
