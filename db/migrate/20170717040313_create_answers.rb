@@ -11,6 +11,8 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.integer :eval1
       t.integer :eval2
       t.integer :eval3
+      t.integer :eval_motion_id
+      t.integer :eval_motion_side
 
       t.timestamps
     end

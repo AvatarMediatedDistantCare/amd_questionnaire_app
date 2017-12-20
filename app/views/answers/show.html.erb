@@ -21,7 +21,7 @@
     <%= form_for(@answer) do |f| %>
       <div class="error_text"><%= flash[:error] %></div>
       <div class="col-sm-12">
-        <h3>アンケート回答欄</h3>
+        <p style="font-size: 24px">アンケート回答欄</p>
         <ul class="list-group">
           <div class="question">
             1. 自然な動作にみえた
@@ -70,7 +70,35 @@
             <div class="ends" style="display:inline">とてもそう思う</div>
           </div>
         </ul>
-      </div>
+
+        <div class="list-group">
+          <div class="question">
+            4. アバタがしていた動作を選択してください
+          </div>
+          <%= f.select :eval_motion_id,
+          [["腕を組む", '0'],
+          ["万歳", '1'],
+          ["首を横に振る", '2'],
+          ["首を縦に振る", '3'],
+          ["屈伸", '4'],
+          ["腰を横に振る", '5'],
+          ["歩く", '6'],
+          ["前屈", '7']], {},
+          class: "form-control likert text-center" %>
+        </div>
+        
+
+        <div class="list-group">
+          <div class="question">
+            5. アバタの身体が向いていた方向を選択してください
+          </div>
+          <%= f.select :eval_motion_side,
+          [["後ろ", '0'],
+          ["前", '1'],
+          ["横", '2']], {},
+          class: "form-control likert text-center" %>
+        </div>
+
       <div style="display: table; width: 100%;">      
         <span class="submit_button">
           <%= f.submit "送信して次へ", class: "btn btn-info" %>
