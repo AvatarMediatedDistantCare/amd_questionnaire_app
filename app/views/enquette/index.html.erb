@@ -1,17 +1,32 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <%= form_for(@user) do |f| %>
-        <div>名前を入力してください(英文字)</div>
-        <%= f.text_field :name %>
-        <div>年齢を入力してください(半角)</div>
-        <%= f.text_field :age, label: "enter age(半角)" %>
-        <div>
-          <label><%= f.radio_button :gender, value: "1" %>男性</label>
-          <label><%= f.radio_button :gender, value: "2" %>女性</label>
+      <section class="form_outer">
+        <div class="form_inner">
+          <%= form_for(@user) do |f| %>
+            <ul>
+              <li class="list_item">
+                <label>名前を入力してください(英文字)</label>
+                <%= f.text_field :name, type: "text", class: "form-control is-invalid", required: true%>
+              </li>
+              
+              <li class="list_item">
+                <label>年齢を選択してください</label>
+                <%= f.select :age, (18..80).each {|n|}, {},class: "form-control" %>
+              </li>
+              
+              <li class="list_item">
+                <label>性別を選択してください</label>
+                <%= f.select :gender, [["男性", '0'],["女性", '1']], {},class: "form-control" %>
+              </li>
+  
+              <li class="list_item">
+                <%= f.submit value: "送信して次へ", class: "btn btn-default" %>
+              </li>
+            </ul>
+          <% end %>
         </div>
-        <%= f.submit value: "送信して次へ"%>
-      <% end %>
+      </section>
     </div>
   </div>
 </div>

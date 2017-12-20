@@ -4,6 +4,27 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+.form_outer{
+  display: block;
+}
+
+.form_inner{
+  background-color: #FFF;
+  width: 400px;
+  margin: auto;
+
+  ul{
+    list-style:none;
+  }
+
+  .list_item{
+    margin-bottom: 20px;
+
+  }
+}
+
+
 .list-group{
   margin-left: 40px;
   li{
