@@ -10,13 +10,11 @@
       <div class="webgl-container" id="webgl-container"></div>
 
       <span class="progress_bar">
-        <div class="progress col-sm-3">
-          <div class="progress-bar"></div>
-        </div>
+        <div class="current_time"></div>
       </span>
     </section>
   </div>
-  <div class="col-md-4"><%= video_tag("/data/movie/movie_0_0.m4v", class: "video_div") %></div>
+  <div class="col-md-4"><%= video_tag("", class: "video_div", loop: false, autoplay: false, muted: true) %></div>
 
   <div class="questions col-md-5">
     <%= form_for(@answer) do |f| %>
@@ -101,6 +99,7 @@
 
   // containers 
   container = document.getElementById('webgl-container');
+  var video = document.getElementsByClassName('video_div')[0];
 
   // variables for threejs
   var clock = new THREE.Clock();
@@ -120,11 +119,13 @@
   var gesture_file_1, model_data;
   var scale=1;
 
-
+  console.log( video );
   model_data = "/model/50s_politician4v2_noglow.js";
   // variables for file handling
   var file_number = <%= @answer.motion_id %>;
   var side_number = <%= @answer.side_id %>;
+  var video_src = "/data/movie/movie_"+ <%= @answer.motion_id %> +"_" + <%= @answer.side_id %> + ".m4v";
+  video.src = video_src;
   if( <%= @answer.gesture_type %> == 0 ){
     gesture_file_1 = "/data/kinect_" + file_number + "_" + side_number + ".csv";
   } else if ( <%= @answer.gesture_type %> == 1 ){
@@ -252,7 +253,8 @@
       scene.add(mesh);
       webglcamera.lookAt(mesh.position);
 
-      
+      // 動画とrenderingの再生
+      video.play()
       render();
     });
   }
@@ -414,7 +416,8 @@
     }
     var percent = (current_frame/(end_frame-10))*100;
     // console.log( percent );
-    $(".progress-bar").css({'width': percent+'%'});
+    // $(".progress-bar").css({'width': percent+'%'});
+    $(".current_time").text(Math.round(current_frame/20) + "/" + Math.round(end_frame/20) + "秒");
     
     var kinect_add_frame = 0;
     var mocap_add_frame = 0;
