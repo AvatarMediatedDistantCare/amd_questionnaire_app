@@ -28,4 +28,5 @@ package-lock.json
 vendor/assets/bower_components
 *.swp
 *.log
+*.m4v
 .DS_Store
