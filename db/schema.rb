@@ -23,8 +23,7 @@ ActiveRecord::Schema.define(version: 20171218074032) do
     t.integer "eval1"
     t.integer "eval2"
     t.integer "eval3"
-    t.integer "eval_motion_id"
-    t.integer "eval_motion_side"
+    t.integer "eval4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

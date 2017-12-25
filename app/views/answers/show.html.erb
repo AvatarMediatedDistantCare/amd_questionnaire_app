@@ -5,19 +5,20 @@
     </div>
   </div>
 
-  <div class="container col-md-6">
+  <div class="container col-md-3">
     <section>
       <div class="webgl-container" id="webgl-container"></div>
 
       <span class="progress_bar">
-        <div class="progress col-sm-12">
+        <div class="progress col-sm-3">
           <div class="progress-bar"></div>
         </div>
       </span>
     </section>
   </div>
+  <div class="col-md-4"><%= video_tag("/data/movie/movie_0_0.m4v", class: "video_div") %></div>
 
-  <div class="questions col-md-6">
+  <div class="questions col-md-5">
     <%= form_for(@answer) do |f| %>
       <div class="error_text"><%= flash[:error] %></div>
       <div class="col-sm-12">
@@ -104,8 +105,8 @@
   // variables for threejs
   var clock = new THREE.Clock();
   var webglcamera, scene, webglrenderer;
-  var webglwidth = 640;
-  var webglheight = 480;
+  var webglwidth = 330;
+  var webglheight = 550;
   var loader,mesh;
   var gesture_count1 = document.getElementById('gesture_count1');
 
