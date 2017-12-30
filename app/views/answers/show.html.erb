@@ -5,16 +5,15 @@
     </div>
   </div>
 
-  <div class="container col-md-3">
-    <section>
+  <div class="container col-md-7">
+    <section class="animation_block">
       <div class="webgl-container" id="webgl-container"></div>
-
-      <span class="progress_bar">
-        <div class="current_time"></div>
-      </span>
+      <%= video_tag("", class: "video_div", loop: false, autoplay: false, muted: true) %>
+      <!-- <span class="progress_bar"> -->
+        <!-- <div class="current_time"></div> --><!-- 
+      </span> -->
     </section>
   </div>
-  <div class="col-md-4"><%= video_tag("", class: "video_div", loop: false, autoplay: false, muted: true) %></div>
 
   <div class="questions col-md-5">
     <%= form_for(@answer) do |f| %>
