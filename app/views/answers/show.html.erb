@@ -6,13 +6,22 @@
   </div>
 
   <div class="container col-md-7">
-    <section class="animation_block">
-      <div class="webgl-container" id="webgl-container"></div>
-      <%= video_tag("", class: "video_div", loop: false, autoplay: false, muted: true) %>
-      <!-- <span class="progress_bar"> -->
-        <!-- <div class="current_time"></div> --><!-- 
-      </span> -->
-    </section>
+    <div class="animation_block">
+      
+      <div class="motion_block col-xs-6">
+        <section class="avatar_motion_section">
+          <h3 class="motion_section_header">アバタの動作</h3>
+          <div class="webgl-container" id="webgl-container"></div>
+        </section>
+      </div>
+
+      <div class="motion_block col-xs-6">
+        <section class="movie_motion_section">
+          <h3 class="motion_section_header">元の動作</h3>
+          <%= video_tag("", class: "video_div", loop: false, autoplay: false, muted: true) %>
+        </section>
+      </div>
+    </div>
   </div>
 
   <div class="questions col-md-5">

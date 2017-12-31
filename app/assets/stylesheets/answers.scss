@@ -34,10 +34,18 @@
   display: block;
   float: left;
 }
-.animation_block{
-  
+.motion_block{
+  padding: 0px !important;
 }
-
+.avatar_motion_section{
+  float: right;
+}
+.movie_motion_section{
+  float: left;
+}
+.motion_section_header{
+  text-align: center;
+}
 
 
 
