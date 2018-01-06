@@ -22,6 +22,7 @@
         </section>
       </div>
     </div>
+    <input type="button" name="animation" value="動画を再生する" onClick="animation_start()" class="btn btn-default animation_start_btn" disabled="true">
   </div>
 
   <div class="questions col-md-6">
@@ -124,6 +125,8 @@
   var end_frame = 0;
   var spotlight = new Array(3);
 
+  var is_load = false;
+
   var gesture_file_1, model_data;
   var scale=1;
 
@@ -149,7 +152,7 @@
 
   // csvファイルを読み込み、配列にして返す
   // return motion[frame][ 25関節 x quaternion(x, y, z, w) ]
-  function load_csv(filename){
+  function load_csv(filename, callback){
     var csvData = new Array();
     var data = new XMLHttpRequest();
     data.open("GET", filename, false); //true:非同期,false:同期
@@ -163,6 +166,7 @@
         csvData.push(cells);
       }
     }
+    callback();
     return csvData;
   }
 
@@ -200,6 +204,12 @@
     vuvu[18].setFromAxisAngle(Zaxis, -angle * 2);
     vuvu[19].setFromAxisAngle(Zaxis, -angle * 2);
   }
+
+  function animation_start(){
+    video.play()
+    render();
+  }
+
 
 
   // functions
@@ -250,7 +260,9 @@
       });
 
       // (1) csvデータの読み込み
-      motion_data = load_csv(gesture_file_1);
+      motion_data = load_csv(gesture_file_1, function(){
+        $(".animation_start_btn").prop("disabled", false);
+      });
       // (2) frameの長さを合わせる
       end_frame = motion_data.length;
       // (3) meshの準備
@@ -262,8 +274,8 @@
       webglcamera.lookAt(mesh.position);
 
       // 動画とrenderingの再生
-      video.play()
-      render();
+      // video.play()
+      // render();
     });
   }
 
@@ -411,6 +423,9 @@
 
 
   function render() {
+    // アニメーション再生ボタンをクリック出来なくさせる
+    $(".animation_start_btn").prop("disabled", true);
+
     // ゆっくり再生させるために、1frameを3倍の時間で再生
     count++;
     if( current_frame < end_frame-1 ){
