@@ -22,7 +22,11 @@
         </section>
       </div>
     </div>
-    <input type="button" name="animation" value="動画を再生する" onClick="animation_start()" class="btn btn-default animation_start_btn" disabled="true">
+    <span class="time_area" >
+      再生時間：<span class="current_time">秒</span>
+      <input type="button" name="animation" value="動画を再生する" onClick="animation_start()" class="btn btn-default animation_start_btn" disabled="true">
+    </span>
+    
   </div>
 
   <div class="questions col-md-6">
@@ -98,7 +102,7 @@
 
       <div style="display: table; width: 100%;">      
         <span class="submit_button">
-          <%= f.submit "送信して次へ", class: "btn btn-info" %>
+          <%= f.submit "送信して次へ", class: "btn btn-info", disabled: true %>
         </span>
       </div>
     </div>
@@ -440,7 +444,7 @@
     var percent = (current_frame/(end_frame-10))*100;
     // console.log( percent );
     // $(".progress-bar").css({'width': percent+'%'});
-    $(".current_time").text(Math.round(current_frame/20) + "/" + Math.round(end_frame/20) + "秒");
+    $(".current_time").text(Math.round(current_frame/21) + "/" + Math.round(end_frame/21) + "秒");
     
     var kinect_add_frame = 0;
     var mocap_add_frame = 0;
