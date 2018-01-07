@@ -138,7 +138,7 @@
   // variables for file handling
   var file_number = <%= @answer.motion_id %>;
   var side_number = <%= @answer.side_id %>;
-  var video_src = "/data/movie/movie_"+ <%= @answer.motion_id %> +"_" + <%= @answer.side_id %> + ".m4v";
+  var video_src = "/data/movie/movie_"+ <%= @answer.motion_id %> +"_" + <%= @answer.side_id %> + ".mp4";
   video.src = video_src;
   if( <%= @answer.gesture_type %> == 0 ){
     gesture_file_1 = "/data/kinect_" + file_number + "_" + side_number + ".csv";
