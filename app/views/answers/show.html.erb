@@ -266,6 +266,7 @@
       motion_data = load_csv(gesture_file_1, function(){
         $(".animation_start_btn").prop("disabled", false);
       });
+      console.log( motion_data );
       // (2) frameの長さを合わせる
       end_frame = motion_data.length;
       // (3) meshの準備
