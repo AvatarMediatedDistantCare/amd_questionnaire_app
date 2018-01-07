@@ -134,7 +134,6 @@
   var gesture_file_1, model_data;
   var scale=1;
 
-  console.log( video );
   model_data = "/model/50s_politician4v2_noglow.js";
   // variables for file handling
   var file_number = <%= @answer.motion_id %>;
@@ -149,7 +148,7 @@
     gesture_file_1 = "/data/mocap_" + file_number + "_" + side_number + ".csv";
   }
   
-  console.log( gesture_file_1 );
+  // console.log( gesture_file_1 );
 
   // main procedure
   init();
