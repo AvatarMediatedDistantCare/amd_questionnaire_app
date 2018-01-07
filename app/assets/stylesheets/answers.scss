@@ -23,14 +23,25 @@
 .time_area{
   float: right;
   vertical-align: middle;
+  margin-top: 10px;
+  .time_detail{
+    display: table-cell;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  .time_area_inner{
+    margin: auto;
+    display: table;
+  }
 }
 .animation_start_btn{
-  float:right;
+  margin-right: 100px;
 }
 
 
 .webgl-container{
-  margin:0px auto;
+  margin:2px auto;
   width:332px;
   height:552px;
   border: solid 1px;
@@ -67,7 +78,7 @@
 
 .submit_button{
   padding: 10px;
-  margin-right: 20px;
+  margin-right: 80px;
   display: inherit;
   float: right;
 }

@@ -2,39 +2,57 @@
   <div class="row">
     <div class="col-md-12">
       <h1>アンケート説明</h1>
-      <div>
-        <h4 class="bold_text">【回答者】<%= User.find(params[:user_id]).name %></h4>
+      
+      <div class="col-xs-12">
+        <div class="col-md-12">
+          <h4 class="bold_text">【回答者】<%= User.find(params[:user_id]).name %></h4>
+        </div>
+
+        <div class="explanation" style="margin-bottom: 20px;">
+          <div class="col-md-12">
+            <h4 class="bold_text">【実験説明】</h4>
+            <ul class="list-group">
+              <li>本アンケートにご協力いただきありがとうございます。本アンケートは【アバタの動作】に伴う印象の調査を目的としています。</li>
+              <li>このページの【回答へ進む】ボタンを押すと回答ページに移り、本アンケートが始まります。</li>
+              <li>回答ページには【アバタの動作】と【元の動作】がセットになった動画と、アンケートの回答に使う【アンケート回答欄(下図)】があります。</li>
+              <li>動画は72種類(各10秒程度)あり、各動画において【アンケート回答欄】を使用して回答してください。</li>
+              <li>すべての設問を選択した後、【送信して次へ】のボタンを押して次の回答ページに進んでください。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xs-12">
+        <div class="col-md-5">
+          <h4 class="bold_text">【操作方法】</h4>
+          <ol class="list-group">
+            <li>本ページ下部の【回答へ進む】ボタンを押し、回答ページへ移動する</li>
+            <li>回答ページ中央【動画を再生する】のボタン押す</li>
+            <li>動画を見て、すべての設問に回答する</li>
+            <li>【送信して次へ】ボタンを押し、次の回答ページに移る</li>
+            <li>すべての回答が終了したらブラウザを閉じる</li>
+          </ol>
+        </div>
+
+        <div class="col-md-4">
+          <img class='questions_image' src="/question.png" />
+          <p style="text-align: center; padding-right: 46px">《アンケート回答欄の例》</p>
+        </div>
       </div>
 
-      <div class="explanation" style="margin-bottom: 20px;">
-        <p>
-          <h4 class="bold_text">【実験説明】</h4>
-          <ul class="list-group">
-            <li>これから流れる10秒程度の動画をみて、動画内のアバタの動作に関するアンケートに回答していただきます。</li>
-            <li>動画は72種類あり、各動画において「アンケート回答欄」で回答してください。</li>
-            <li>すべての回答を選択した後、「送信して次へ」のボタンを押して次の問に進んでください。</li>
-          </ul>
-        </p>
-  
-        <p>
-          <h4 class="bold_text">【回答方法】</h4>
-          <ol class="list-group">
-            <li>回答は7段階評価で、一番左が『まったくそう思わない』、一番右が『とてもそう思う』となっています。いちばん当てはまるものを選択して下さい</li>
-
-            <p>《アンケート回答欄の例》</p>
-            <img class='questions_image' src="/question.png" />
-          </ol>
-        </p>
-        <p>
+      <div class="col-xs-12">
+        <div class="col-md-12">
           <h4 class="bold_text">【注意事項】</h4>
           <ol class="list-group">
-            <li><strong>動画は1度しか流れません</strong></li>
-            <li><strong>ブラウザの「戻る」ボタン等を使って前動画について回答しなおさないでください。</strong></li>
+            <li>回答する際は<strong>ブラウザを全画面表示にしてください</strong></li>
+            <li><strong>動画は1度しか再生することは出来ません</strong></li>
+            <li>回答は7段階評価で、<strong>一番左が【まったくそう思わない】、一番右が【とてもそう思う】</strong>となっています。いちばん当てはまるものを選択して下さい</li>
+            <li>ブラウザの「戻る」ボタン等を使って<strong>前動画について回答しなおさないでください。</strong></li>
             <li><strong>動画の再生が終わるまで回答の送信は出来ません</strong></li>
           </ol>
-        </p>
+        </div>
       </div>
-      <%= button_to "回答へ進む", sessions_path(user_id: params[:user_id]), action: "post" %>
+      <%= button_to "回答へ進む", sessions_path(user_id: params[:user_id]), action: "post", class: "btn btn-success btn-lg start_enquette" %>
     </div>
   </div>
 </div>

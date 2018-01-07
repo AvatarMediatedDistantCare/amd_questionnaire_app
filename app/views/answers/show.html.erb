@@ -22,10 +22,12 @@
         </section>
       </div>
     </div>
-    <span class="time_area" >
-      再生時間：<span class="current_time">秒</span>
-      <input type="button" name="animation" value="動画を再生する" onClick="animation_start()" class="btn btn-default animation_start_btn" disabled="true">
-    </span>
+    <div class="col-xs-12 time_area" >
+      <div class="time_area_inner">
+        <div class="time_detail">再生時間：<span class="current_time">秒</span>　</div>
+        <input type="button" name="animation" value="動画を再生する" onClick="animation_start()" class="btn btn-default btn-lg animation_start_btn" disabled="true">
+      </div>
+    </div>
     
   </div>
 
@@ -33,7 +35,7 @@
     <%= form_for(@answer) do |f| %>
       <div class="error_text"><%= flash[:error] %></div>
       <div class="col-sm-12">
-        <p style="font-size: 24px">アンケート回答欄</p>
+        <div style="font-size: 24px; margin-bottom: 20px;">アンケート回答欄</div>
         <ul class="list-group">
           <div class="question">
             Q1.  『アバタの動作』は自然な動作にみえた
@@ -101,9 +103,9 @@
         </ul>
 
       <div style="display: table; width: 100%;">      
-        <span class="submit_button">
+        <div class="submit_button">
           <%= f.submit "送信して次へ", class: "btn btn-info", disabled: true %>
-        </span>
+        </div>
       </div>
     </div>
   <% end%>
